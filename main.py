@@ -17,10 +17,7 @@ async def scrape(target: str):
 
     plug_data = await plugs[target].scrape()
 
-    return f"""
-<html>
-    <body>
-        <pre># HELP plug_is_on Whether the plug is on
+    return f"""# HELP plug_is_on Whether the plug is on
 # TYPE plug_is_on gauge
 plug_is_on{{alias="{plug_data['alias']}"}} {int(plug_data['is_on'])}
 # HELP plug_rssi The signal strength of the plug
@@ -34,7 +31,4 @@ plug_emeter_realtime_power{{alias="{plug_data['alias']}"}} {plug_data['emeter_re
 plug_emeter_this_month{{alias="{plug_data['alias']}"}} {plug_data['emeter_this_month']}
 # HELP plug_emeter_today The power usage of the plug today
 # TYPE plug_emeter_today gauge
-plug_emeter_today{{alias="{plug_data['alias']}"}} {plug_data['emeter_today']}</pre>
-    </body>
-</html>
-    """
+plug_emeter_today{{alias="{plug_data['alias']}"}} {plug_data['emeter_today']}"""
