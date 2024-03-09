@@ -19,4 +19,4 @@ ARG KASA_USERNAME
 ARG KASA_PASSWORD
 
 # Run app.py when the container launches
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
